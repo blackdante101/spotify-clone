@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import LibraryNavigationCategory from './LibraryNavigationCategory';
 import LibraryNavigationAlbumCard from './LibraryNavigationAlbumCard';
 import axios from 'axios';
+import LibraryNavigationSkeleton from './LibraryNavigationSkeleton';
 
 function LibraryNavigation() {
 
@@ -17,7 +18,7 @@ function LibraryNavigation() {
               ids: albumIds
             },
             headers: {
-              'X-RapidAPI-Key': '5779cd9435msh21bee9835236da8p1896b3jsn652af5a80a5b',
+              'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
               'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
             }
           };
@@ -82,7 +83,8 @@ function LibraryNavigation() {
         </div>
 
         <div id="albumsContainer" style={{overflowY:'scroll', height: '75%'}} className="div   mt-2">
-            {albumsData.map(album => <LibraryNavigationAlbumCard name={album.name} img={album.images[0].url} artist={album.artists[0].name}/>)}
+            
+            {albumsData.length > 0 ? albumsData.map(album => <LibraryNavigationAlbumCard name={album?.name} img={album?.images[0].url} artist={album?.artists[0].name}/>) : <LibraryNavigationSkeleton/>}
         </div>
 
     </div>
