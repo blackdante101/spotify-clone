@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import LibraryNavigationCategory from './LibraryNavigationCategory';
 import LibraryNavigationAlbumCard from './LibraryNavigationAlbumCard';
 import axios from 'axios';
+import LibraryNavigationSkeleton from './LibraryNavigationSkeleton';
 
 function LibraryNavigation() {
 
@@ -32,7 +33,7 @@ function LibraryNavigation() {
     }
 
     useEffect(()=>{
-        // getAlbums()  
+        getAlbums()  
     }, [])
 
   return (
@@ -82,7 +83,8 @@ function LibraryNavigation() {
         </div>
 
         <div id="albumsContainer" style={{overflowY:'scroll', height: '75%'}} className="div   mt-2">
-            {albumsData.map(album => <LibraryNavigationAlbumCard name={album.name} img={album.images[0].url} artist={album.artists[0].name}/>)}
+            
+            {albumsData.length > 0 ? albumsData.map(album => <LibraryNavigationAlbumCard name={album?.name} img={album?.images[0].url} artist={album?.artists[0].name}/>) : <LibraryNavigationSkeleton/>}
         </div>
 
     </div>

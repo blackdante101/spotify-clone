@@ -42,16 +42,20 @@ function Homepage() {
      
       <div style={{height: '100%'}} className="container-fluid lightBlackContainer p-3"> 
             <HomeHeader/>
-             <HomeSkeletonComponent/>
-            {/*   <div className='homeContainer'>
-               <PreviouslyListened data={contentData}/> */}
-                {
-                  // contentData.slice(1,6).map(content=><RecommendationBlock title={content?.name} data={content?.content.items}/>)
-                }
-               {/* <RecommendationBlock title={'R&B New Releases'} data={contentData}/> */}
-               
-            {/* </div> */}
-           
+            {
+              contentData.length < 1 ?  <HomeSkeletonComponent/> : <>
+                
+                  <div className='homeContainer'>
+                   <PreviouslyListened data={contentData}/> 
+                    {
+                      contentData.slice(1,6).map(content=><RecommendationBlock title={content?.name} data={content?.content.items}/>)
+                    }
+                   
+                   
+                </div>
+              </>
+            
+                  }
         </div>
     </div>
   )
