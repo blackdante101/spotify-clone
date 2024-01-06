@@ -1,0 +1,114 @@
+
+/* @font-face {
+    font-family: 'Gotham';
+    src:  url('../assets/spotify-font/GothamBook.ttf') format('truetype')
+} */
+html{
+  background-color: #000;
+}
+body {
+  margin: 0;
+  font-family:var(--font-family,CircularSpTitle,CircularSpTitle-Tall,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  background: #000;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.lightBlackContainer {
+  border-radius: 10px;
+  background-color: #121212;
+}
+
+.hasNavigationMenu p {
+  font-size: 16px;
+  font-weight: 550;
+  color: #b3b3b3;
+}
+
+.hasNavigationMenu {
+  cursor: pointer;
+}
+
+.hasNavigationMenu:hover svg{
+  color: white;
+}
+.hasNavigationMenu:hover p{
+  color: white;
+}
+
+.hasNavigationMenu.active svg {
+  color: white;
+}
+
+.hasNavigationMenu.active p {
+  color: white;
+}
+
+#activeNavigationLink {
+  color: #fff;
+}
+
+.hasNavigationMenuIcon {
+  font-size: 25px;
+  color: #b3b3b3;
+}
+
+.libraryCategoryContainer{
+  overflow-x: scroll;
+  width: 96%!important;
+}
+
+.libraryCategoryContainer::-webkit-scrollbar {
+  width: 0px!important;
+  height: 0px;
+}
+
+.libraryCategoryButton{
+  background-color: #ffffff12!important;
+  color: white!important;
+  border-radius: 20px!important;
+  font-size: 13px!important;
+  font-weight: 500!important;
+  white-space: nowrap;
+}
+
+.libraryCategoryMoreButton {
+  color: white!important;
+  border-radius: 20px!important;
+  font-size: 14px!important;
+  font-weight: 500!important;
+  white-space: nowrap;
+  z-index:1;
+  position:absolute;
+  right: -4px;
+  bottom: -4px;
+  background-color: #242424!important;
+  padding:15px
+
+}
+
+#albumsContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#albumsContainer::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+#albumsContainer::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+#albumsContainer::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
