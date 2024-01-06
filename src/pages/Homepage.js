@@ -1,20 +1,57 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Icon } from '@iconify/react'
+import HomeHeader from '../components/HomeHeader'
+import PreviouslyListened from '../components/PreviouslyListened'
+import axios from 'axios'
+import RecommendationBlock from '../components/RecommendationBlock'
+import HomeSkeletonComponent from '../components/HomeSkeletonComponent'
 
 function Homepage() {
+  const [contentData, setContentData] = useState([])
+
+  const getHomeContent = async() => {
+      const options = {
+        method: 'GET',
+        url: 'https://spotify23.p.rapidapi.com/genre_view/',
+        params: {
+          id: '0JQ5DAqbMKFEC4WFtoNRpw',
+          content_limit: '10',
+          limit: '20'
+        },
+        headers: {
+          'X-RapidAPI-Key': '5779cd9435msh21bee9835236da8p1896b3jsn652af5a80a5b',
+          'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+        }
+      };
+        
+        try {
+            const response = await axios.request(options);
+            console.log(response.data);
+            setContentData(response.data.content.items)
+        } catch (error) {
+            console.error(error);
+        }
+  }
+
+  useEffect(()=>{
+      getHomeContent()  
+  }, [])
+
   return (
     <div style={{background: '#000'}} className="col-md-9 pt-2">
-        <div style={{height: '100%'}} className="container-fluid lightBlackContainer p-3">
-            <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex align-items-center">
-                  <button className="btn homeArrows p-1"><Icon className='hasNavigationMenuIcon' icon="iconoir:nav-arrow-left" /></button>
-                  <button className="btn homeArrows p-1 ms-2"><Icon className='hasNavigationMenuIcon' icon="iconoir:nav-arrow-right" /></button>
-                </div>
-                <div className="d-flex align-items-center">
-                    <button id="installAppBtn" className="btn px-3 d-flex align-items-center"><Icon style={{fontSize: '18px', color: 'white'}} className='hasNavigationMenuIcon' icon="streamline:download-circle" />&nbsp; Install App</button>
-                    <button id="installAppBtn" className="btn ms-2 px-3 d-flex align-items-center"><Icon style={{fontSize: '18px', color: 'white'}} className='hasNavigationMenuIcon' icon="octicon:bell-24" /></button>
-                </div>
-            </div>
+     
+      <div style={{height: '100%'}} className="container-fluid lightBlackContainer p-3"> 
+            <HomeHeader/>
+             <HomeSkeletonComponent/>
+            {/*   <div className='homeContainer'>
+               <PreviouslyListened data={contentData}/> */}
+                {
+                  // contentData.slice(1,6).map(content=><RecommendationBlock title={content?.name} data={content?.content.items}/>)
+                }
+               {/* <RecommendationBlock title={'R&B New Releases'} data={contentData}/> */}
+               
+            {/* </div> */}
+           
         </div>
     </div>
   )

@@ -32,7 +32,7 @@ function LibraryNavigation() {
     }
 
     useEffect(()=>{
-        getAlbums()  
+        // getAlbums()  
     }, [])
 
   return (
