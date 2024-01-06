@@ -19,7 +19,7 @@ function Homepage() {
           limit: '20'
         },
         headers: {
-          'X-RapidAPI-Key': '5779cd9435msh21bee9835236da8p1896b3jsn652af5a80a5b',
+          'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
           'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
         }
       };
